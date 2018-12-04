@@ -18,11 +18,11 @@ class Core
     when /^1/
       translations.clear
       translations.read_from_csv_file('../data/ru_en_translations.csv')
-      sub_menu(translations, mode = '(RU_EN mode):')
+      sub_menu(translations, '(RU_EN mode):')
     when /^2/
       translations.clear
       translations.read_from_csv_file('../data/en_ru_translations.csv')
-      sub_menu(translations, mode = '(EN_RU mode):')
+      sub_menu(translations, '(EN_RU mode):')
     else
       puts
     end
