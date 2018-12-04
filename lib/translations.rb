@@ -21,6 +21,10 @@ class Translations
     end
   end
 
+  def clear
+    @translations.clear
+  end
+
   def at(index)
     @translations[index]
   end
@@ -32,8 +36,10 @@ class Translations
 
       print 'Translation:'
       puts value.translation.to_s
-      print 'Synonyms:'
-      puts value.synonyms.to_s
+      if !value.synonyms.empty?
+        print 'Synonyms:'
+        puts value.synonyms.to_s
+      end
       flag = true
     end
     puts 'Unknown word' unless flag
@@ -43,10 +49,11 @@ class Translations
     flag = false
     puts 'Words for this letter:'
     @translations.each do |value|
-      if value.word.slice(0..letter.size - 1) == letter.mb_chars.downcase
-        puts value.word
-        flag = true
-      end
+      next unless value.word.slice(0..letter.size - 1) == letter.mb_chars.downcase
+
+      print 'Word: ' + value.word
+      puts ' Translation: ' + value.translation
+      flag = true
     end
     puts 'No words for the given letter' unless flag
   end
@@ -64,7 +71,7 @@ class Translations
           flag = true
         end
       end
-      puts 'Word ' + word + ' missing in the translation list' unless flag
+      puts 'Word "' + word + '" missing in the translation list' unless flag
     end
     puts result
   end
