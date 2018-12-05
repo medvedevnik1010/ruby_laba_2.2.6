@@ -15,6 +15,10 @@ class Translations
     end
   end
 
+  def append(translation)
+    @translations << translation
+  end
+
   def each_to_print
     @translations.each do |value|
       puts value.to_s.mb_chars
