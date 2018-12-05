@@ -48,7 +48,7 @@ RSpec.describe Translations do
   describe '#print_translation_with_synonyms' do
     before(:example) do
       @list = Translations.new
-      @bye_translation = Translation.new('bye', 'poka', '')      
+      @bye_translation = Translation.new('bye', 'poka', '')
       allow($stdout).to receive(:puts)
       allow(@list).to receive(:print)
     end
