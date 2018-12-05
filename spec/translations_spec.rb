@@ -53,7 +53,7 @@ RSpec.describe Translations do
   describe '#to_s' do
     it 'should convert translation with synonyms to string' do
       bye_translation = Translation.new('hello', 'privet', 'zdrav')
-      expect(bye_translation.to_s).to eq('Word: hello, Translation: privet, Synonyms: zdrav')      
+      expect(bye_translation.to_s).to eq('Word: hello, Translation: privet, Synonyms: zdrav')
     end
   end
 
