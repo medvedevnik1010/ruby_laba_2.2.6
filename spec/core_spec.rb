@@ -85,18 +85,18 @@ RSpec.describe Core do
     end
 
     it 'processing of method execution of printing word translation with synonyms' do
-        allow(@translations).to receive(:print_translation_with_synonyms)      
-        @core.word_translation(@translations, 'mode')
+      allow(@translations).to receive(:print_translation_with_synonyms)
+      @core.word_translation(@translations, 'mode')
     end
 
     it 'processing of method execution of printing words with translations by letter' do
-        allow(@translations).to receive(:print_words_starts_with_letter)
-        @core.words_into_letter(@translations, 'mode')
+      allow(@translations).to receive(:print_words_starts_with_letter)
+      @core.words_into_letter(@translations, 'mode')
     end
 
     it 'processing of method execution of printing words translations by set' do
-        allow(@translations).to receive(:print_words_translation)
-        @core.words_translation(@translations, 'mode')
+      allow(@translations).to receive(:print_words_translation)
+      @core.words_translation(@translations, 'mode')
     end
   end
 end

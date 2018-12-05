@@ -12,41 +12,29 @@ RSpec.describe Translations do
     end
   end
 
-  describe '#append' do
+  describe '#collection operations' do
+    before(:example) do
+      @list = Translations.new
+      @translation = Translation.new('bye', 'poka', '')
+      @list.append(@translation)
+    end
+
     it 'should add translation to translations list' do
-      list = Translations.new
-      translation = Translation.new('hello', 'zdrav', 'privet')
-      list.append(translation)
-      expect(list.translations).to eq([translation])
+      expect(@list.translations).to eq([@translation])
     end
-  end
 
-  describe '#each_to_print' do
     it 'should print translations to console' do
-      list = Translations.new
       allow($stdout).to receive(:puts)
-      translation = Translation.new('bye', 'poka', '')
-      list.append(translation)
-      list.each_to_print
+      @list.each_to_print
     end
-  end
 
-  describe '#clear' do
     it 'should clear translations list' do
-      list = Translations.new
-      bye_translation = Translation.new('bye', 'poka', '')
-      list.append(bye_translation)
-      list.clear
-      expect(list.translations.empty?).to eq(true)
+      @list.clear
+      expect(@list.translations.empty?).to eq(true)
     end
-  end
 
-  describe '#at' do
     it 'should return translation by index from translations list' do
-      list = Translations.new
-      bye_translation = Translation.new('bye', 'poka', '')
-      list.append(bye_translation)
-      expect(list.at(0)).to eq(bye_translation)
+      expect(@list.at(0)).to eq(@translation)
     end
   end
 
@@ -60,8 +48,7 @@ RSpec.describe Translations do
   describe '#print_translation_with_synonyms' do
     before(:example) do
       @list = Translations.new
-      @bye_translation = Translation.new('bye', 'poka', '')
-      @hello_translation = Translation.new('hello', 'privet', 'zdrav')
+      @bye_translation = Translation.new('bye', 'poka', '')      
       allow($stdout).to receive(:puts)
       allow(@list).to receive(:print)
     end
@@ -73,29 +60,19 @@ RSpec.describe Translations do
     end
 
     it 'should print translation with synonyms for preset word' do
-      @list.append(@hello_translation)
+      hello_translation = Translation.new('hello', 'privet', 'zdrav')
+      @list.append(hello_translation)
       @list.print_translation_with_synonyms('hello')
     end
-  end
 
-  describe '#print_words_starts_with_letter' do
     it 'should print words that starts with preset letter' do
-      list = Translations.new
-      allow($stdout).to receive(:puts)
-      allow(list).to receive(:print)
-      bye_translation = Translation.new('bye', 'poka', '')
-      list.append(bye_translation)
-      list.print_words_starts_with_letter('b')
+      @list.append(@bye_translation)
+      @list.print_words_starts_with_letter('b')
     end
-  end
 
-  describe '#print_words_translation' do
     it 'should print input words translations' do
-      list = Translations.new
-      allow($stdout).to receive(:puts)
-      bye_translation = Translation.new('bye', 'poka', '')
-      list.append(bye_translation)
-      list.print_words_translation('bye')
+      @list.append(@bye_translation)
+      @list.print_words_translation('bye')
     end
   end
 end
