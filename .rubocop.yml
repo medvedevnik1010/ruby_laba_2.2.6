@@ -5,7 +5,7 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Max: 15
 Style/NegatedIf:
-  Enabled: false
+  Enabled: false  
 Metrics/BlockLength:
   ExcludedMethods:
     - RSpec.describe

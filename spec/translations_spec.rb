@@ -61,7 +61,7 @@ RSpec.describe Translations do
     before(:example) do
       @list = Translations.new
       @bye_translation = Translation.new('bye', 'poka', '')
-      @hello_translation = Translation.new('hello', 'привет', 'здравствуйте')
+      @hello_translation = Translation.new('hello', 'privet', 'zdrav')
       allow($stdout).to receive(:puts)
       allow(@list).to receive(:print)
     end
